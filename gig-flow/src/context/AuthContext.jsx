@@ -13,11 +13,11 @@ export const AuthProvider = ({ children }) => {
   
   // Configure Axios global defaults
   axios.defaults.withCredentials = true;
-  axios.defaults.baseURL = 'http://localhost:5000/api';
+  axios.defaults.baseURL = 'https://gigflow-an7x.onrender.com/api';
 
   useEffect(() => {
     if (user) {
-      const socketInstance = io('http://localhost:5000');
+      const socketInstance = io('https://gigflow-an7x.onrender.com');
       
       socketInstance.emit('setup', user);
       
