@@ -13,11 +13,11 @@ export const AuthProvider = ({ children }) => {
   
   // Configure Axios global defaults
   axios.defaults.withCredentials = true;
-  axios.defaults.baseURL = 'https://gigflow-an7x.onrender.com/api';
+  axios.defaults.baseURL = 'https://gig-flow-jade.vercel.app/';
 
   useEffect(() => {
     if (user) {
-      const socketInstance = io('https://gigflow-an7x.onrender.com');
+      const socketInstance = io('https://gig-flow-jade.vercel.app/');
       
       socketInstance.emit('setup', user);
       
