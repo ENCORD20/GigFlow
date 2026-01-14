@@ -13,11 +13,11 @@ export const AuthProvider = ({ children }) => {
   
   // Configure Axios global defaults
   axios.defaults.withCredentials = true;
-  axios.defaults.baseURL = 'https://gigflow-an7x.onrender.com/api';
+  axios.defaults.baseURL = 'https://gig-flow-jade.vercel.app/';
 
   useEffect(() => {
     if (user) {
-      const socketInstance = io('https://gigflow-an7x.onrender.com');
+      const socketInstance = io('https://gig-flow-jade.vercel.app/');
       
       socketInstance.emit('setup', user);
       
@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (name, email, password) => {
     try {
-      const { data } = await axios.post('/auth/register', { name, email, password });
+      const { data } = await axios.post('/api/auth/register', { name, email, password });
       setUser(data);
       toast.success('Registration successful!');
       return true;
@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const { data } = await axios.post('/auth/login', { email, password });
+      const { data } = await axios.post('/api/auth/login', { email, password });
       setUser(data);
       toast.success('Login successful!');
       return true;
@@ -72,7 +72,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await axios.post('/auth/logout');
+      await axios.post('/api/auth/logout');
       setUser(null);
       if (socket) {
         socket.disconnect();

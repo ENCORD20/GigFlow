@@ -18,7 +18,7 @@ const Dashboard = () => {
   const fetchGigs = async (searchQuery = '') => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/gigs?search=${searchQuery}`);
+      const { data } = await axios.get(`/api/gigs?search=${searchQuery}`);
       setGigs(data);
     } catch (error) {
       console.error(error);
@@ -30,7 +30,7 @@ const Dashboard = () => {
 
   const fetchMyProjects = async () => {
     try {
-        const { data } = await axios.get('/bids/my-projects');
+        const { data } = await axios.get('/api/bids/my-projects');
         setMyProjects(data);
     } catch (error) {
         console.error('Failed to load my projects', error);

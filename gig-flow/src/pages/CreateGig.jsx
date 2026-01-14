@@ -14,7 +14,7 @@ const CreateGig = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/gigs', { title, description, budget });
+      await axios.post('/api/gigs', { title, description, budget });
       toast.success('Gig posted successfully!');
       navigate('/dashboard');
     } catch (error) {

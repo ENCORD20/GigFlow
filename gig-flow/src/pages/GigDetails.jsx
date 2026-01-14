@@ -18,7 +18,7 @@ const GigDetails = () => {
 
   const fetchGigDetails = async () => {
     try {
-      const { data } = await axios.get(`/gigs/${id}`);
+      const { data } = await axios.get(`/api/gigs/${id}`);
       setGig(data);
     } catch (error) {
       toast.error('Failed to load gig details');
@@ -30,7 +30,7 @@ const GigDetails = () => {
 
   const fetchBids = async () => {
     try {
-      const { data } = await axios.get(`/bids/${id}`);
+      const { data } = await axios.get(`/api/bids/${id}`);
       setBids(data);
     } catch (error) {
       console.error(error);
@@ -50,7 +50,7 @@ const GigDetails = () => {
   const handlePlaceBid = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/bids', {
+      await axios.post('/api/bids', {
         gigId: id,
         message: bidMessage,
         price: bidPrice,
@@ -67,7 +67,7 @@ const GigDetails = () => {
     if (!window.confirm('Are you sure you want to hire this freelancer? This action cannot be undone.')) return;
     
     try {
-      await axios.patch(`/bids/${bidId}/hire`);
+      await axios.patch(`/api/bids/${bidId}/hire`);
       toast.success('Freelancer hired successfully!');
       fetchGigDetails();
       fetchBids();
