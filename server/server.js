@@ -13,6 +13,7 @@ import bidRoutes from './routes/bidRoutes.js';
 dotenv.config();
 
 const app = express();
+
 const httpServer = createServer(app);
 
 // Middleware
